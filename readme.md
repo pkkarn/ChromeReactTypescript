@@ -4,6 +4,8 @@
 it into `React.createElement` thing.
 4. `webpack` will take all the files and different modules and then will convert them into one single file and that browser can understand and load directly
 5. `copy-webpack-plugin` to copy static files in targeted folder
+6. `CleanWebpackPlugin` used to clean build before you initiate new one
+7. `cross-env` is used to toggle env
 
 
 
