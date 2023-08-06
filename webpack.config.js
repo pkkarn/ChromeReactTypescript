@@ -10,8 +10,14 @@ const filepath = (pathData) => {
     if (rootFile.includes(pathData.chunk.name)) {
        return '[name].js';
     }
+
+    const htmlFiles = ['popup', 'options']
+    if (htmlFiles.includes(pathData.chunk.name)) {
+        return '[name]/[name].js'
+    }
+    
     // Otherwise, use the directory structure
-    return '[name]/[name].js';
+    return 'external/[name]/[name].js';
 }
 
 const mapHtmlPlugin = (chunks) => {
@@ -63,5 +69,10 @@ module.exports = {
     output: {
         filename: filepath,
         path: path.resolve('dist')
+    },
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
     }
 }
