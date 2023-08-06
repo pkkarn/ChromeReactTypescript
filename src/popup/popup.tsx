@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { Popup } from './PopupComponent'
+import { Popup } from './PopupPage'
 
 const popupEl = document.createElement('div')
 popupEl.setAttribute('id', 'popup')

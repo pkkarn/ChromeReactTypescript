@@ -18,6 +18,7 @@ module.exports = {
     devtool: 'cheap-module-source-map',
     entry:{
         popup: path.resolve('src/popup/popup.tsx'),
+        options: path.resolve('src/options/options.tsx'),
         background: path.resolve('src/background.ts'),
         "content-script": path.resolve('src/content-script.ts')
     }, // entry point, this is the place where it will start building dependency graph
@@ -45,6 +46,12 @@ module.exports = {
             title: 'React Chrome Extension',
             filename: 'popup.html',
             chunks: ['popup']
+        }),
+
+        new HtmlWebpackPlugin({
+            title: 'Option Page Html',
+            filename: 'options.html',
+            chunks: ['options']
         })
     ],
     resolve: {
