@@ -48,6 +48,10 @@ module.exports = {
             use: 'ts-loader',
             test: /\.tsx?$/,
             exclude: /node_modules/
+        }, {
+            use: ['style-loader', 'css-loader', 'sass-loader'],
+            test: /\.(scss|sass|css)$/,
+            exclude: /node_modules/
         }],
     },
     plugins: [
