@@ -36,6 +36,9 @@ module.exports = {
             patterns: [{
                 from: path.resolve('src/manifest.json'),
                 to: path.resolve('dist')
+            }, {
+                from: path.resolve('src/assets'),
+                to: path.resolve('dist/assets')
             }]
         }),
         new HtmlWebpackPlugin({
