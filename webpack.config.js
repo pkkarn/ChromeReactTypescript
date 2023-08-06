@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+require('dotenv').config()
 
 
 const filepath = (pathData) => {
@@ -15,7 +16,7 @@ const filepath = (pathData) => {
     if (htmlFiles.includes(pathData.chunk.name)) {
         return '[name]/[name].js'
     }
-    
+
     // Otherwise, use the directory structure
     return 'external/[name]/[name].js';
 }
@@ -32,8 +33,8 @@ const mapHtmlPlugin = (chunks) => {
 }
 
 module.exports = {
-    mode: 'development',
-    devtool: 'cheap-module-source-map',
+    mode: process.env.MODE,
+    devtool: process.env.MODE === 'production' ? false : 'cheap-module-source-map',
     entry:{
         popup: path.resolve('src/popup/popup.tsx'),
         options: path.resolve('src/options/options.tsx'),
