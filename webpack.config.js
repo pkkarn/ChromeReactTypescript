@@ -52,6 +52,9 @@ module.exports = {
             use: ['style-loader', 'css-loader', 'sass-loader'],
             test: /\.(scss|sass|css)$/,
             exclude: /node_modules/
+        }, {
+            type: 'asset/resource',
+            test: /\.(jpg|jpeg|png|woff|woff2|eot|ttf|svg)$/,
         }],
     },
     plugins: [

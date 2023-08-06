@@ -6,6 +6,7 @@ export const Popup:React.FC = () => {
         <>
             <div>
                 <h1>{title}</h1>
+                <img src="assets/icon16.png" alt="" />
             </div>
         </>
     )
