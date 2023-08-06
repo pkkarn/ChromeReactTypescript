@@ -11,7 +11,18 @@ const filepath = (pathData) => {
     }
     // Otherwise, use the directory structure
     return '[name]/[name].js';
- }
+}
+
+const mapHtmlPlugin = (chunks) => {
+    const htmlPluginList = chunks.map(chunk => {
+        return new HtmlWebpackPlugin({
+            title: 'React Chrome Extension',
+            filename: `${chunk}.html`,
+            chunks: [`${chunk}`]
+        })
+    })
+    return htmlPluginList
+}
 
 module.exports = {
     mode: 'development',
@@ -42,17 +53,7 @@ module.exports = {
                 to: path.resolve('dist/assets')
             }]
         }),
-        new HtmlWebpackPlugin({
-            title: 'React Chrome Extension',
-            filename: 'popup.html',
-            chunks: ['popup']
-        }),
-
-        new HtmlWebpackPlugin({
-            title: 'Option Page Html',
-            filename: 'options.html',
-            chunks: ['options']
-        })
+        ...mapHtmlPlugin(['popup', 'options'])
     ],
     resolve: {
         extensions: ['.ts', '.tsx', '.js']
