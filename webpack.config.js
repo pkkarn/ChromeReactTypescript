@@ -80,7 +80,9 @@ module.exports = {
     },
     optimization: {
         splitChunks: {
-            chunks: 'all'
+            chunks(chunkName) {
+                return chunkName.name !== 'content-script'
+            }
         }
     }
 }
