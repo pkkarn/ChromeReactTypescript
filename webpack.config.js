@@ -39,7 +39,7 @@ module.exports = {
         popup: path.resolve('src/popup/popup.tsx'),
         options: path.resolve('src/options/options.tsx'),
         background: path.resolve('src/background.ts'),
-        "content-script": path.resolve('src/content-script.ts')
+        "content-script": path.resolve('src/content-script.tsx')
     }, // entry point, this is the place where it will start building dependency graph
     module: {
         // To compile typescript file it needs additional module
@@ -72,7 +72,7 @@ module.exports = {
         ...mapHtmlPlugin(['popup', 'options'])
     ],
     resolve: {
-        extensions: ['.ts', '.tsx', '.js']
+        extensions: ['.ts', '.tsx', '.js'],
     },
     output: {
         filename: filepath,
@@ -80,7 +80,9 @@ module.exports = {
     },
     optimization: {
         splitChunks: {
-            chunks: 'all'
+            chunks(chunkName) {
+                return chunkName.name !== 'content-script'
+            }
         }
     }
 }
