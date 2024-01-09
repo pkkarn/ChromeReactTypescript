@@ -9,6 +9,12 @@
         "48": "assets/icon32.png",
         "128": "assets/icon32.png"
     },
+    "permissions": [
+        "sidePanel"
+    ],
+    "side_panel": {
+       "default_path": "sidepanel.html"
+    },
     "action": {
         "default_title": "Click Me",   
         "default_popup": "popup.html",

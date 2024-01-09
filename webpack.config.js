@@ -12,7 +12,7 @@ const filepath = (pathData) => {
        return '[name].js';
     }
 
-    const htmlFiles = ['popup', 'options']
+    const htmlFiles = ['popup', 'options', 'sidepanel']
     if (htmlFiles.includes(pathData.chunk.name)) {
         return '[name]/[name].js'
     }
@@ -38,6 +38,7 @@ module.exports = {
     entry:{
         popup: path.resolve('src/popup/popup.tsx'),
         options: path.resolve('src/options/options.tsx'),
+        sidepanel: path.resolve('src/sidepanel/sidepanel.tsx'),
         background: path.resolve('src/background.ts'),
         "content-script": path.resolve('src/content-script.tsx')
     }, // entry point, this is the place where it will start building dependency graph
@@ -69,7 +70,7 @@ module.exports = {
             }]
         }),
         new CleanWebpackPlugin(), // to clean before rebuild
-        ...mapHtmlPlugin(['popup', 'options'])
+        ...mapHtmlPlugin(['popup', 'options', 'sidepanel'])
     ],
     resolve: {
         extensions: ['.ts', '.tsx', '.js'],
